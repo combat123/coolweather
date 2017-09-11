@@ -6,7 +6,7 @@
         <list>
             <mapping class="com.xnfh.coolweather.db.Province"/>
             <mapping class="com.xnfh.coolweather.db.City"/>
-            <mapping class="com.xnfh.coolweather.db.County"/>
+            <mapping class="com.xnfh.coolweather.db.Country"/>
         </list>
     </litepal>
 </resources>

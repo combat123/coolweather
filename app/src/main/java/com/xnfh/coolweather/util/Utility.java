@@ -2,9 +2,11 @@ package com.xnfh.coolweather.util;
 
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
 import com.xnfh.coolweather.db.City;
 import com.xnfh.coolweather.db.Country;
 import com.xnfh.coolweather.db.Province;
+import com.xnfh.coolweather.gson.Weather;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -87,5 +89,22 @@ public class Utility {
 
         }
         return false;
+    }
+
+    /**
+     * 将json解析成weather实体类
+     * @param response
+     * @return
+     */
+    public static Weather handleWeatherResponse(String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent,Weather.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
